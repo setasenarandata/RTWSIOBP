@@ -1,9 +1,9 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
+	"id": "RTWSIOBP",
+	"name": "Remove Trailing WhiteSpace Infront of Obsidian Bullet Points",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
+	"description": "This is a plugin that I make because sometimes when I copy and paste something from the internet, i need to Remove Trailing WhiteSpace Infront of Obsidian Bullet Points",
 	"author": "Obsidian",
 	"authorUrl": "https://obsidian.md",
 	"fundingUrl": "https://obsidian.md/pricing",
