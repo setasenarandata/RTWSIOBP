@@ -1,4 +1,4 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Editor, EditorPosition, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
 // Remember to rename these classes and interfaces!
 
@@ -18,24 +18,23 @@ export default class MyPlugin extends Plugin {
 			id: "rtwsiobp",
 			name: "Remove Trailing Whitespace",
 			editorCallback: (editor: Editor) => {
-				const selection = editor.getSelection()
+				const lines = editor.lineCount()
 				
-				let bullet = 0;
-				let remBool = false;
+				let counter: number = 0
 
-				for (let i=0; i < selection.length; i++) {
-					if (remBool == false && selection.charAt(i) == "-") {
-						remBool = true
-						bullet++
-					}
-
-					if (remBool) {
-						if (selection.charAt(i) == ' ') {
-							console.log ("I found white spaces")
+				for (let i=0; i < lines; i++) {
+					const line = editor.getLine(i)
+					if (line.charAt(0) == "-") {
+						if (line.charAt(2) == " " && line.charAt(3) == " ") {
+							const startPos: EditorPosition = {line: i, ch: 2}
+							const endPos: EditorPosition = {line: i, ch: 4}
+							editor.replaceRange('', startPos, endPos);
+							counter++
 						}
 					}
 				}
-				console.log(bullet)
+
+				new Notice("Success. " + counter + " lines were affected.")
 			}
 		})	
 	}
